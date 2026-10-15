@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer";
 import Header from "@/components/Header";
 import { ogImageUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
