@@ -1,66 +1,35 @@
 import Link from "next/link";
-import { CATEGORIES, TOOLS } from "@/lib/tools";
-import { SITE } from "@/lib/site";
 
-export function Footer() {
-  const featured = TOOLS.filter((t) => t.live).slice(0, 5);
+export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-border bg-muted/30 print:hidden">
-      <div className="container grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <p className="text-lg font-bold">{SITE.name}</p>
-          <p className="mt-2 text-sm text-muted-foreground">{SITE.slogan}</p>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Your files never leave your device. Every tool runs in your browser.
+    <footer className="border-t border-slate-200 bg-white py-8 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        {/* روابط الموقع */}
+        <div className="flex gap-6">
+          <Link href="/privacy-policy" className="hover:underline">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="hover:underline">
+            Terms of Service
+          </Link>
+        </div>
+
+        {/* الحقوق واسم المطور */}
+        <div className="text-center md:text-right">
+          <p>
+            © {new Date().getFullYear()} Toolza. Developed by{" "}
+            <a
+              href="https://github.com/ibrahimelhaouary"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+            >
+              Ibrahim Elhaouary
+            </a>
           </p>
         </div>
-        <div>
-          <p className="mb-3 text-sm font-semibold">Categories</p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {CATEGORIES.map((c) => (
-              <li key={c.id}>
-                <Link href={`/#${c.id}`} className="hover:text-foreground">
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="mb-3 text-sm font-semibold">Popular tools</p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {featured.map((t) => (
-              <li key={t.slug}>
-                <Link href={t.href} className="hover:text-foreground">
-                  {t.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="mb-3 text-sm font-semibold">Company</p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>
-              <Link href="/privacy-policy" className="hover:text-foreground">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-foreground">
-                Terms of Service
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-foreground">
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+
       </div>
     </footer>
   );
