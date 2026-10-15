@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     images: [ogImageUrl(siteConfig.name, siteConfig.slogan)],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "LzR_KsFT7khyPAYXPiO5XxOqJ_3ddy8Dq0ZA0DAb3Xs",
+  },
   other: siteConfig.adsenseClient ? { "google-adsense-account": siteConfig.adsenseClient } : undefined,
 };
 
