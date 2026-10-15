@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 20%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 40%;
+    --accent: 243 100% 97%;
+    --accent-foreground: 243 75% 45%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 88%;
+    --ring: 243 75% 59%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 30% 7%;
+    --foreground: 210 20% 96%;
+    --card: 224 28% 10%;
+    --card-foreground: 210 20% 96%;
+    --primary: 243 85% 68%;
+    --primary-foreground: 224 30% 7%;
+    --secondary: 224 20% 15%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 224 20% 15%;
+    --muted-foreground: 220 10% 66%;
+    --accent: 243 40% 18%;
+    --accent-foreground: 243 100% 88%;
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 224 18% 18%;
+    --input: 224 18% 22%;
+    --ring: 243 85% 68%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground hover:opacity-90;
+  }
+  .btn-outline {
+    @apply btn border border-input bg-background hover:bg-secondary;
+  }
+  .btn-ghost {
+    @apply btn hover:bg-secondary;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .field {
+    @apply w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium text-muted-foreground;
+  }
+  .panel {
+    @apply rounded-lg border bg-card p-4 text-card-foreground shadow-sm sm:p-6;
+  }
+}
+
+/* ---------- Print: used by the CV builder (A4) ---------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  #cv-print {
+    width: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
