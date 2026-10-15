@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} –${siteConfig.slogan}`,
+    default: `${siteConfig.name} – ${siteConfig.slogan}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} –${siteConfig.slogan}`,
+    title: `${siteConfig.name} – ${siteConfig.slogan}`,
     description: siteConfig.description,
     url: siteConfig.url,
     images: [{ url: ogImageUrl(siteConfig.name, siteConfig.slogan), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} –${siteConfig.slogan}`,
+    title: `${siteConfig.name} – ${siteConfig.slogan}`,
     description: siteConfig.description,
     images: [ogImageUrl(siteConfig.name, siteConfig.slogan)],
   },
@@ -53,4 +53,14 @@ export const viewport: Viewport = {
   ],
 };
 
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))
+const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`;
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-site-verification" content="LzR_KsFT7khyPAYXPiO5XxOqJ_3ddy8Dq0ZA0DAb3Xs" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="flex min-h-screen flex-col">
+        <Header />
