@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-white py-8 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
         
-        {/* روابط الموقع */}
+        {/* روابط قانونية للموقع */}
         <div className="flex gap-6">
           <Link href="/privacy-policy" className="hover:underline">
             Privacy Policy
@@ -15,7 +15,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* الحقوق واسم المطور */}
+        {/* حقوق الموقع والاسم ديالك */}
         <div className="text-center md:text-right">
           <p>
             © {new Date().getFullYear()} Toolza. Developed by{" "}
